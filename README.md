@@ -1,2 +1,1 @@
-# hslu_ad_ex
-Exercises - Algorithm and Data structure modul
+# Exercises - HSLU Algorithms and Data Structures
