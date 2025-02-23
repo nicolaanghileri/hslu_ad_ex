@@ -30,6 +30,5 @@ public final class ZugSimulation {
         Wagen w = new Wagen(1, 60, new Wagen(2, 40, new Wagen(3, 80)));
 
         System.out.println("Total seats: " + berechneGesamtPlätze(w));
-
     }
 }
