@@ -14,7 +14,7 @@ public class Task {
     public static void task1() {
         countTask1++;
         try {
-            Thread.sleep(5); // Simulierte konstante Laufzeit
+            Thread.sleep(5);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
