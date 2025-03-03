@@ -1,16 +1,27 @@
 package ch.hslu.sw02.list;
 
 /**
- *
+ * Self made version of a List in Java.
+ * 
  * @author Nicola Anghileri - nicola.anghileri@stud.hslu.ch
- * @version 25.02.2025
+ * @version 03.03.2025
  */
-public class List {
+public class List<T> {
 
-    private Node<Integer> head;
+    private Node<T> head;
 
-    public List(Node<Integer> head) {
+    private int size = 0;
+
+    public List(Node<T> head) {
         this.head = head;
+
+        Node<T> current = head;
+        int count = 0;
+        while (current != null) {
+            count++;
+            current = current.getNext();
+        }
+        this.size = count;
     }
 
     public List() {
@@ -18,28 +29,61 @@ public class List {
     }
 
     public int size() {
-        if (head != null) {
-            int sum = 0;
-            Node<Integer> currentNode = head;
+        return this.size;
+    }
+
+    public void insert(T value) {
+        if (value != null) {
+            Node<T> newHead = new Node(value);
+            newHead.setNext(this.head);
+            this.head = newHead;
+            this.size++;
+        }
+
+    }
+
+    public boolean contains(T value) {
+        if (head != null && value != null) {
+            Node<T> currentNode = head;
             do {
-                sum++;
+                if (currentNode.getValue().equals(value)) {
+                    return true;
+                }
                 currentNode = currentNode.getNext();
             } while (currentNode != null);
-            return sum;
         }
-        return 0;
-
+        return false;
     }
 
-    public void add(Node<Integer> node){
-        Node<Integer> old = this.head;
-        this.head = node;
-        this.head.setNext(old);
+    public T removeFirst() {
+        if (head != null) {
+            T returnValue = this.head.getValue();
+            this.head = this.head.getNext();
+            this.size--;
+            return returnValue;
+        }
+        return null;
     }
 
-    public static void main(String[] args) {
-        List list = new List(new Node<Integer>(2));
-        System.out.println(list.size());
+    public boolean remove(T value) {
+        if (head != null && value != null) {
+            if (this.head.getValue().equals(value)) {
+                removeFirst();
+                return true;
+            }
+            Node<T> currentNode = this.head.getNext();
+            Node<T> lastNode = this.head;
+            do {
+                if (currentNode.getValue().equals(value)) {
+                    lastNode.setNext(currentNode.getNext());
+                    this.size--;
+                    return true;
+                }
+                lastNode = currentNode;
+                currentNode = currentNode.getNext();
+            } while (currentNode != null);
+        }
+        return false;
     }
 
 }

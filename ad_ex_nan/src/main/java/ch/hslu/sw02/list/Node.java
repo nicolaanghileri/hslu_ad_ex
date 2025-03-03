@@ -2,9 +2,9 @@ package ch.hslu.sw02.list;
 
 
 /**
- * 
+ * Self made version of a Node in Java.
  * @author Nicola Anghileri - nicola.anghileri@stud.hslu.ch
- * @version 25.02.2025 
+ * @version 03.03.2025 
  */
 public class Node<T> {
     public T value;
