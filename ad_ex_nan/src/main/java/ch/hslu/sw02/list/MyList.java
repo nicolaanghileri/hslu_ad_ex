@@ -6,13 +6,13 @@ package ch.hslu.sw02.list;
  * @author Nicola Anghileri - nicola.anghileri@stud.hslu.ch
  * @version 03.03.2025
  */
-public class List<T> {
+public class MyList<T> {
 
     private Node<T> head;
 
     private int size = 0;
 
-    public List(Node<T> head) {
+    public MyList(Node<T> head) {
         this.head = head;
 
         Node<T> current = head;
@@ -24,7 +24,7 @@ public class List<T> {
         this.size = count;
     }
 
-    public List() {
+    public MyList() {
         this.head = null;
     }
 
