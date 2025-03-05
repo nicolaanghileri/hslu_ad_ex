@@ -33,6 +33,9 @@ public class MyList<T> {
     }
 
     public void insert(T value) {
+
+
+        // Corrections - if null weg lassen, und this.head = newHead, wird immer gemacht!!
         if (value != null) {
             Node<T> newHead = new Node(value);
             newHead.setNext(this.head);
