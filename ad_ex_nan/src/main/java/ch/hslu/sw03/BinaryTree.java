@@ -33,7 +33,7 @@ public class BinaryTree<T extends Comparable<? super T>> implements BinaryTreeab
         node5.setLeftChild(node4);
         node5.setRightChild(node7);
         //
-        node7.setLeftChild(node5);
+        node7.setLeftChild(node6);
         node7.setRightChild(node8);
         //
         node15.setLeftChild(node13);
@@ -103,10 +103,32 @@ public class BinaryTree<T extends Comparable<? super T>> implements BinaryTreeab
         }
     }
 
+    public void inOrderTraverse() {
+        if (root == null) {
+            System.out.println("Tree is empty.");
+            return;
+        }
+        inOrderTraverse(root);
+        System.out.println();
+    }
+
+    private void inOrderTraverse(Node<T> node) {
+        if (node == null) {
+            return;
+        }
+
+        inOrderTraverse(node.getLeftChild());         // Linker Teilbaum
+        System.out.print(node.getValue() + " ");      // Aktuellen Knoten ausgeben
+        inOrderTraverse(node.getRightChild());        // Rechter Teilbaum
+    }
+    
+    public Node<T> getRoot() {
+        return this.root;
+    }
+
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'size'");
+        return this.size;
     }
 
     @Override
