@@ -1,4 +1,4 @@
-package ch.hslu.sw03;
+package ch.hslu.sw03.binarytree;
 
 /**
  * Class that describes all basic functions for a BinaryTree.
@@ -29,16 +29,16 @@ public class BinaryTree<T extends Comparable<? super T>> implements BinaryTreeab
 
         node10.setLeftChild(node5);
         node10.setRightChild(node15);
-        //
+        
         node5.setLeftChild(node4);
         node5.setRightChild(node7);
-        //
+        
         node7.setLeftChild(node6);
         node7.setRightChild(node8);
-        //
+        
         node15.setLeftChild(node13);
         node15.setRightChild(node17);
-        //
+        
         node13.setLeftChild(node12);
     }
 

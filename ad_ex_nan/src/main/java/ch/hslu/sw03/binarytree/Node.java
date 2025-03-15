@@ -1,4 +1,4 @@
-package ch.hslu.sw03;
+package ch.hslu.sw03.binarytree;
 
 public class Node<T extends Comparable<? super T>> {
     

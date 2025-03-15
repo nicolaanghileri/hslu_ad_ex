@@ -1,4 +1,4 @@
-package ch.hslu.sw03;
+package ch.hslu.sw03.binarytree;
 
 /**
  * Interface that defines a BinaryTree.
