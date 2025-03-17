@@ -41,7 +41,9 @@ public class BankAccount {
      * @param amount the added number.
      */
     public void deposite(final int amount) {
-        this.balance += amount;
+        synchronized (this) {
+            this.balance += amount;
+        }
     }
 
     /**
@@ -51,7 +53,9 @@ public class BankAccount {
      * @param amount the amount beeing transfered.
      */
     public void transfer(final BankAccount target, final int amount) {
-        this.balance -= amount;
-        target.deposite(amount);
+        synchronized (this) {
+            this.balance -= amount;
+            target.deposite(amount);
+        }
     }
 }
