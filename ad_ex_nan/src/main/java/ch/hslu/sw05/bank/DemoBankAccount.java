@@ -1,4 +1,4 @@
-package ch.hslu.sw04.bank;
+package ch.hslu.sw05.bank;
 
 import java.util.ArrayList;
 import java.util.List;

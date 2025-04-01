@@ -1,4 +1,4 @@
-package ch.hslu.sw04.bank;
+package ch.hslu.sw05.bank;
 
 /**
  * Task for Thread - Exection of bank transfer.

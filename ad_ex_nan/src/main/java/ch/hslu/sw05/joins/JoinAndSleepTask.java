@@ -1,4 +1,4 @@
-package ch.hslu.sw04.joins;
+package ch.hslu.sw05.joins;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
