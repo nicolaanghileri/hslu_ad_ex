@@ -16,8 +16,9 @@
 package ch.hslu.sw06.latch;
 
 import java.util.Random;
-import org.slf4j.LoggerFactory;
+
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Ein Rennpferd, das durch ein Startsignal losläuft. Nach einer zufälligen Zeit

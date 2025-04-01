@@ -15,6 +15,9 @@
  */
 package ch.hslu.sw06.latch;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,10 +41,31 @@ public final class Turf {
      */
     public static void main(final String[] args) {
         final Synch starterBox = new Latch();
+        List<Thread> threads = new ArrayList<>();
+
         for (int i = 1; i <= HORSES; i++) {
-            Thread.startVirtualThread(new RaceHorse(starterBox, "Horse " + i));
+            Thread t = Thread.startVirtualThread(new RaceHorse(starterBox, "Horse " + i));
+            threads.add(t);
         }
+
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
         LOG.info("Start...");
         starterBox.release();
+
+        for (Thread t : threads) {
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                LOG.error(e.getMessage());
+            }
+        }
+        
+        LOG.info("Alle Pferde sind im Ziel. Rennen beendet.");
+
     }
 }

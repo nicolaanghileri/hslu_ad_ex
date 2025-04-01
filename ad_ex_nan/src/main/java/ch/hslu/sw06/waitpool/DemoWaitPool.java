@@ -13,34 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.sw06.latch;
+package ch.hslu.sw06.waitpool;
 
 /**
- * Eine Synchronisationshilfe, die es ermöglicht, einen oder mehrere Threads
- * warten zu lassen, bis diese durch andere Threads aufgeweckt werden. Latches
- * sperren so lange, bis sie einmal ausgelöst werden. Danach sind sie frei
- * passierbar.
+ * Demonstration eines Wait-Pools.
  */
-public final class Latch implements Synch {
+public final class DemoWaitPool {
 
-    private boolean released = false;
+    private static final Object LOCK = new Object();
 
     /**
-     * Erzeugt ein Latch.
+     * Privater Konstruktor.
      */
-    public Latch() {
+    private DemoWaitPool() {
     }
 
-    @Override
-    public synchronized void acquire() throws InterruptedException {
-        while (!released) {
-            wait();
+    /**
+     * Main-Demo.
+     * @param args not used.
+     * @throws InterruptedException wenn das warten unterbrochen wird.
+     */
+    public static void main(final String args[]) throws InterruptedException {
+        final MyTask waiter = new MyTask(LOCK);
+        new Thread(waiter).start();
+
+        Thread.sleep(1000);
+        synchronized (LOCK) {
+            LOCK.notify();
         }
-    }
-
-    @Override
-    public synchronized void release() {
-        released = true;
-        notifyAll();
+        
     }
 }
