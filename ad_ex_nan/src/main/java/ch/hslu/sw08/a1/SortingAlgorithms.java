@@ -3,6 +3,7 @@ package ch.hslu.sw08.a1;
 import ch.hslu.sw08.a1.animation.SortingAnimation;
 
 public class SortingAlgorithms {
+
     public static int insertionSort(int[] numbers) {
         int comparisons = 0;
 
@@ -57,7 +58,7 @@ public class SortingAlgorithms {
 
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - 1 - i; j++) {
-                comparisons++; 
+                comparisons++;
 
                 if (numbers[j] > numbers[j + 1]) {
                     // Vertauschen
@@ -73,4 +74,62 @@ public class SortingAlgorithms {
 
         return comparisons;
     }
+
+    // Quicksort Block
+    
+    public static void quickSort(int[] numbers, int start, int end) {
+        if (start < end) {
+            int p = partition(numbers, start, end);
+
+            quickSort(numbers, start, p);
+            quickSort(numbers, p + 1, end);
+        }
+    }
+
+    private static long comparisons = 0;
+    public static long quickSort(final int[] numbers) {
+        int start = 0;
+        int end = numbers.length - 1;
+        if (start < end) {
+            int p = partition(numbers, start, end);
+
+            quickSort(numbers, start, p);
+            quickSort(numbers, p + 1, end);
+        }
+        return comparisons;
+    }
+
+    private static int partition(int[] numbers, int start, int end) {
+        int pivot = numbers[start];
+        int i = start - 1;
+        int j = end + 1;
+
+        while (true) {
+            do {
+                i++;
+                comparisons++;
+                //SortingAnimation.instance().showArray(numbers, 30, i);
+            } while (numbers[i] < pivot);
+
+            do {
+                j--;
+                comparisons++;
+                //SortingAnimation.instance().showArray(numbers, 30, j);
+            } while (numbers[j] > pivot);
+
+            comparisons++;
+            if (i >= j) {
+                //SortingAnimation.instance().showArray(numbers, 30, j);
+                return j;
+            }
+
+            // tausche numbers[i] und numbers[j]
+            int tmp = numbers[i];
+            numbers[i] = numbers[j];
+            numbers[j] = tmp;
+
+            //SortingAnimation.instance().showArray(numbers, 30, i);
+        }
+    }
+
 }
